@@ -4,13 +4,12 @@ export default defineNuxtConfig({
   compatibilityDate: "2026-03-10",
   devtools: { enabled: false },
   devServer: {
-    port: 3003
+    port: 3000
   },
   modules: ["@nuxt/image", "@nuxt/ui", "@vueuse/nuxt", "@pinia/nuxt", "@nuxt/eslint", "@nuxtjs/sitemap"],
 
   image: {
-    // In static mode, images are served directly by Nginx.
-    // Using 'none' provider disables the /_ipx/ proxy that causes 404s.
+    // Serve files from /public without the /_ipx/ optimizer.
     provider: 'none'
   },
 
@@ -18,7 +17,16 @@ export default defineNuxtConfig({
 
   app: {
     pageTransition: false,
-    layoutTransition: false
+    layoutTransition: false,
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/logo.png' }
+      ]
+    }
+  },
+
+  nitro: {
+    preset: 'vercel'
   },
 
   site: {

@@ -1,0 +1,1 @@
+import{bI as i}from"./t9_-WYgJ.js";function c(){const e=i("chinese-learning-recent",[]);function t(n){e.value=[n,...e.value.filter(r=>r.key!==n.key)].slice(0,20)}return{recent:e,addRecent:t}}export{c as u};

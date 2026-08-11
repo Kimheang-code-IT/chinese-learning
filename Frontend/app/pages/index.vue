@@ -54,8 +54,8 @@ useSeoMeta({
   ogTitle: 'ដំណាក់សិក្សា - រៀនភាសាចិនជាមួយន័យខ្មែរ',
   description: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ និងគំនូសអក្សរចិនបានយ៉ាងងាយស្រួល។',
   ogDescription: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ និងគំនូសអក្សរចិនបានយ៉ាងងាយស្រួល។',
-  ogImage: '/logo-tab.svg',
-  twitterImage: '/logo-tab.svg'
+  ogImage: '/logo.png',
+  twitterImage: '/logo.png'
 })
 </script>
 

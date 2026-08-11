@@ -76,7 +76,7 @@ useSeoMeta({
   ogTitle: () => `${word.value.hanzi} (${word.value.pinyin}) - រៀនភាសាចិន`,
   description: () => `រៀនពាក្យ "${word.value.hanzi}" មានន័យថា "${word.value.khmer}" ជាមួយដំណាក់សិក្សា។`,
   ogDescription: () => `រៀនពាក្យ "${word.value.hanzi}" មានន័យថា "${word.value.khmer}" ជាមួយដំណាក់សិក្សា។`,
-  ogImage: '/logo-tab.svg'
+  ogImage: '/logo.png'
 })
 </script>
 

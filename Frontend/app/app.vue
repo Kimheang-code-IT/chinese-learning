@@ -15,7 +15,7 @@ useHead({
     { key: 'theme-color', name: 'theme-color', content: () => color.value }
   ],
   link: [
-    { rel: 'icon', type: 'image/png', href: '/logo-tab.svg' },
+    { rel: 'icon', type: 'image/png', href: '/logo.png' },
     { rel: 'canonical', href: 'https://chinese.domnakseuksa.com' }
   ],
   htmlAttrs: {
@@ -43,7 +43,7 @@ useSeoMeta({
   ogSiteName: 'ដំណាក់សិក្សា',
   ogLocale: 'km_KH',
   ogType: 'website',
-  ogImage: '/logo-tab.svg',
+  ogImage: '/logo.png',
   robots: 'index, follow'
 })
 // Auth state is now handled globally by the plugins/auth.ts and stores/auth.ts
