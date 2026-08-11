@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Unknown routes → home (does not match /words/:book or /words/:book/:word)
+// Fallback for unknown paths during static hosting
 await navigateTo('/', { replace: true })
 </script>
 

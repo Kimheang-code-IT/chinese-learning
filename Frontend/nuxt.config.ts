@@ -1,3 +1,7 @@
+const wordRoutes = [1, 2, 3].flatMap((book) =>
+  Array.from({ length: 100 }, (_, i) => `/words/${book}/${i + 1}`)
+)
+
 export default defineNuxtConfig({
   srcDir: "app",
   ssr: true,
@@ -24,12 +28,24 @@ export default defineNuxtConfig({
     }
   },
 
+  routeRules: {
+    '/': { prerender: true },
+    '/words/**': { prerender: true }
+  },
+
   nitro: {
-    preset: 'vercel'
+    // Static CDN output — avoids Vercel serverless "vue not found" crashes
+    preset: 'vercel-static',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/', '/words/1', '/words/2', '/words/3', ...wordRoutes],
+      failOnError: false
+    }
   },
 
   site: {
     name: 'រៀនកុំព្យូទ័រ',
+    url: 'https://chinese-learning-jet.vercel.app'
   },
 
   sitemap: {
@@ -38,7 +54,8 @@ export default defineNuxtConfig({
       '/',
       '/words/1',
       '/words/2',
-      '/words/3'
+      '/words/3',
+      ...wordRoutes
     ]
   },
 

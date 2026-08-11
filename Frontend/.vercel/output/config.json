@@ -1,6 +1,919 @@
 {
   "version": 3,
-  "overrides": {},
+  "overrides": {
+    "index.html": {
+      "path": ""
+    },
+    "words/1/index.html": {
+      "path": "words/1"
+    },
+    "words/2/index.html": {
+      "path": "words/2"
+    },
+    "words/3/index.html": {
+      "path": "words/3"
+    },
+    "words/1/1/index.html": {
+      "path": "words/1/1"
+    },
+    "words/1/4/index.html": {
+      "path": "words/1/4"
+    },
+    "words/1/2/index.html": {
+      "path": "words/1/2"
+    },
+    "words/1/3/index.html": {
+      "path": "words/1/3"
+    },
+    "words/1/5/index.html": {
+      "path": "words/1/5"
+    },
+    "words/1/8/index.html": {
+      "path": "words/1/8"
+    },
+    "words/1/12/index.html": {
+      "path": "words/1/12"
+    },
+    "words/1/6/index.html": {
+      "path": "words/1/6"
+    },
+    "words/1/9/index.html": {
+      "path": "words/1/9"
+    },
+    "words/1/7/index.html": {
+      "path": "words/1/7"
+    },
+    "words/1/10/index.html": {
+      "path": "words/1/10"
+    },
+    "words/1/11/index.html": {
+      "path": "words/1/11"
+    },
+    "words/1/14/index.html": {
+      "path": "words/1/14"
+    },
+    "words/1/16/index.html": {
+      "path": "words/1/16"
+    },
+    "words/1/17/index.html": {
+      "path": "words/1/17"
+    },
+    "words/1/13/index.html": {
+      "path": "words/1/13"
+    },
+    "words/1/15/index.html": {
+      "path": "words/1/15"
+    },
+    "words/1/18/index.html": {
+      "path": "words/1/18"
+    },
+    "words/1/22/index.html": {
+      "path": "words/1/22"
+    },
+    "words/1/25/index.html": {
+      "path": "words/1/25"
+    },
+    "words/1/20/index.html": {
+      "path": "words/1/20"
+    },
+    "words/1/23/index.html": {
+      "path": "words/1/23"
+    },
+    "words/1/24/index.html": {
+      "path": "words/1/24"
+    },
+    "words/1/26/index.html": {
+      "path": "words/1/26"
+    },
+    "words/1/19/index.html": {
+      "path": "words/1/19"
+    },
+    "words/1/28/index.html": {
+      "path": "words/1/28"
+    },
+    "words/1/32/index.html": {
+      "path": "words/1/32"
+    },
+    "words/1/21/index.html": {
+      "path": "words/1/21"
+    },
+    "words/1/27/index.html": {
+      "path": "words/1/27"
+    },
+    "words/1/31/index.html": {
+      "path": "words/1/31"
+    },
+    "words/1/29/index.html": {
+      "path": "words/1/29"
+    },
+    "words/1/30/index.html": {
+      "path": "words/1/30"
+    },
+    "words/1/37/index.html": {
+      "path": "words/1/37"
+    },
+    "words/1/38/index.html": {
+      "path": "words/1/38"
+    },
+    "words/1/36/index.html": {
+      "path": "words/1/36"
+    },
+    "words/1/39/index.html": {
+      "path": "words/1/39"
+    },
+    "words/1/40/index.html": {
+      "path": "words/1/40"
+    },
+    "words/1/41/index.html": {
+      "path": "words/1/41"
+    },
+    "words/1/42/index.html": {
+      "path": "words/1/42"
+    },
+    "words/1/33/index.html": {
+      "path": "words/1/33"
+    },
+    "words/1/43/index.html": {
+      "path": "words/1/43"
+    },
+    "words/1/45/index.html": {
+      "path": "words/1/45"
+    },
+    "words/1/44/index.html": {
+      "path": "words/1/44"
+    },
+    "words/1/46/index.html": {
+      "path": "words/1/46"
+    },
+    "words/1/48/index.html": {
+      "path": "words/1/48"
+    },
+    "words/1/47/index.html": {
+      "path": "words/1/47"
+    },
+    "words/1/54/index.html": {
+      "path": "words/1/54"
+    },
+    "words/1/51/index.html": {
+      "path": "words/1/51"
+    },
+    "words/1/49/index.html": {
+      "path": "words/1/49"
+    },
+    "words/1/56/index.html": {
+      "path": "words/1/56"
+    },
+    "words/1/53/index.html": {
+      "path": "words/1/53"
+    },
+    "words/1/52/index.html": {
+      "path": "words/1/52"
+    },
+    "words/1/59/index.html": {
+      "path": "words/1/59"
+    },
+    "words/1/35/index.html": {
+      "path": "words/1/35"
+    },
+    "words/1/50/index.html": {
+      "path": "words/1/50"
+    },
+    "words/1/34/index.html": {
+      "path": "words/1/34"
+    },
+    "words/1/55/index.html": {
+      "path": "words/1/55"
+    },
+    "words/1/60/index.html": {
+      "path": "words/1/60"
+    },
+    "words/1/57/index.html": {
+      "path": "words/1/57"
+    },
+    "words/1/58/index.html": {
+      "path": "words/1/58"
+    },
+    "words/1/62/index.html": {
+      "path": "words/1/62"
+    },
+    "words/1/61/index.html": {
+      "path": "words/1/61"
+    },
+    "words/1/64/index.html": {
+      "path": "words/1/64"
+    },
+    "words/1/63/index.html": {
+      "path": "words/1/63"
+    },
+    "words/1/67/index.html": {
+      "path": "words/1/67"
+    },
+    "words/1/66/index.html": {
+      "path": "words/1/66"
+    },
+    "words/1/65/index.html": {
+      "path": "words/1/65"
+    },
+    "words/1/71/index.html": {
+      "path": "words/1/71"
+    },
+    "words/1/68/index.html": {
+      "path": "words/1/68"
+    },
+    "words/1/69/index.html": {
+      "path": "words/1/69"
+    },
+    "words/1/70/index.html": {
+      "path": "words/1/70"
+    },
+    "words/1/74/index.html": {
+      "path": "words/1/74"
+    },
+    "words/1/75/index.html": {
+      "path": "words/1/75"
+    },
+    "words/1/72/index.html": {
+      "path": "words/1/72"
+    },
+    "words/1/78/index.html": {
+      "path": "words/1/78"
+    },
+    "words/1/82/index.html": {
+      "path": "words/1/82"
+    },
+    "words/1/79/index.html": {
+      "path": "words/1/79"
+    },
+    "words/1/81/index.html": {
+      "path": "words/1/81"
+    },
+    "words/1/83/index.html": {
+      "path": "words/1/83"
+    },
+    "words/1/80/index.html": {
+      "path": "words/1/80"
+    },
+    "words/1/73/index.html": {
+      "path": "words/1/73"
+    },
+    "words/1/76/index.html": {
+      "path": "words/1/76"
+    },
+    "words/1/86/index.html": {
+      "path": "words/1/86"
+    },
+    "words/1/89/index.html": {
+      "path": "words/1/89"
+    },
+    "words/1/88/index.html": {
+      "path": "words/1/88"
+    },
+    "words/1/87/index.html": {
+      "path": "words/1/87"
+    },
+    "words/1/84/index.html": {
+      "path": "words/1/84"
+    },
+    "words/1/93/index.html": {
+      "path": "words/1/93"
+    },
+    "words/1/92/index.html": {
+      "path": "words/1/92"
+    },
+    "words/1/90/index.html": {
+      "path": "words/1/90"
+    },
+    "words/1/91/index.html": {
+      "path": "words/1/91"
+    },
+    "words/1/95/index.html": {
+      "path": "words/1/95"
+    },
+    "words/1/96/index.html": {
+      "path": "words/1/96"
+    },
+    "words/1/98/index.html": {
+      "path": "words/1/98"
+    },
+    "words/1/97/index.html": {
+      "path": "words/1/97"
+    },
+    "words/1/94/index.html": {
+      "path": "words/1/94"
+    },
+    "words/1/77/index.html": {
+      "path": "words/1/77"
+    },
+    "words/1/99/index.html": {
+      "path": "words/1/99"
+    },
+    "words/1/100/index.html": {
+      "path": "words/1/100"
+    },
+    "words/1/85/index.html": {
+      "path": "words/1/85"
+    },
+    "words/2/2/index.html": {
+      "path": "words/2/2"
+    },
+    "words/2/6/index.html": {
+      "path": "words/2/6"
+    },
+    "words/2/1/index.html": {
+      "path": "words/2/1"
+    },
+    "words/2/3/index.html": {
+      "path": "words/2/3"
+    },
+    "words/2/5/index.html": {
+      "path": "words/2/5"
+    },
+    "words/2/7/index.html": {
+      "path": "words/2/7"
+    },
+    "words/2/9/index.html": {
+      "path": "words/2/9"
+    },
+    "words/2/4/index.html": {
+      "path": "words/2/4"
+    },
+    "words/2/10/index.html": {
+      "path": "words/2/10"
+    },
+    "words/2/11/index.html": {
+      "path": "words/2/11"
+    },
+    "words/2/13/index.html": {
+      "path": "words/2/13"
+    },
+    "words/2/12/index.html": {
+      "path": "words/2/12"
+    },
+    "words/2/16/index.html": {
+      "path": "words/2/16"
+    },
+    "words/2/15/index.html": {
+      "path": "words/2/15"
+    },
+    "words/2/14/index.html": {
+      "path": "words/2/14"
+    },
+    "words/2/18/index.html": {
+      "path": "words/2/18"
+    },
+    "words/2/17/index.html": {
+      "path": "words/2/17"
+    },
+    "words/2/20/index.html": {
+      "path": "words/2/20"
+    },
+    "words/2/19/index.html": {
+      "path": "words/2/19"
+    },
+    "words/2/21/index.html": {
+      "path": "words/2/21"
+    },
+    "words/2/8/index.html": {
+      "path": "words/2/8"
+    },
+    "words/2/22/index.html": {
+      "path": "words/2/22"
+    },
+    "words/2/23/index.html": {
+      "path": "words/2/23"
+    },
+    "words/2/24/index.html": {
+      "path": "words/2/24"
+    },
+    "words/2/27/index.html": {
+      "path": "words/2/27"
+    },
+    "words/2/25/index.html": {
+      "path": "words/2/25"
+    },
+    "words/2/26/index.html": {
+      "path": "words/2/26"
+    },
+    "words/2/28/index.html": {
+      "path": "words/2/28"
+    },
+    "words/2/29/index.html": {
+      "path": "words/2/29"
+    },
+    "words/2/30/index.html": {
+      "path": "words/2/30"
+    },
+    "words/2/35/index.html": {
+      "path": "words/2/35"
+    },
+    "words/2/31/index.html": {
+      "path": "words/2/31"
+    },
+    "words/2/32/index.html": {
+      "path": "words/2/32"
+    },
+    "words/2/33/index.html": {
+      "path": "words/2/33"
+    },
+    "words/2/37/index.html": {
+      "path": "words/2/37"
+    },
+    "words/2/36/index.html": {
+      "path": "words/2/36"
+    },
+    "words/2/34/index.html": {
+      "path": "words/2/34"
+    },
+    "words/2/38/index.html": {
+      "path": "words/2/38"
+    },
+    "words/2/43/index.html": {
+      "path": "words/2/43"
+    },
+    "words/2/39/index.html": {
+      "path": "words/2/39"
+    },
+    "words/2/40/index.html": {
+      "path": "words/2/40"
+    },
+    "words/2/46/index.html": {
+      "path": "words/2/46"
+    },
+    "words/2/44/index.html": {
+      "path": "words/2/44"
+    },
+    "words/2/45/index.html": {
+      "path": "words/2/45"
+    },
+    "words/2/49/index.html": {
+      "path": "words/2/49"
+    },
+    "words/2/42/index.html": {
+      "path": "words/2/42"
+    },
+    "words/2/41/index.html": {
+      "path": "words/2/41"
+    },
+    "words/2/55/index.html": {
+      "path": "words/2/55"
+    },
+    "words/2/47/index.html": {
+      "path": "words/2/47"
+    },
+    "words/2/51/index.html": {
+      "path": "words/2/51"
+    },
+    "words/2/52/index.html": {
+      "path": "words/2/52"
+    },
+    "words/2/56/index.html": {
+      "path": "words/2/56"
+    },
+    "words/2/50/index.html": {
+      "path": "words/2/50"
+    },
+    "words/2/48/index.html": {
+      "path": "words/2/48"
+    },
+    "words/2/60/index.html": {
+      "path": "words/2/60"
+    },
+    "words/2/59/index.html": {
+      "path": "words/2/59"
+    },
+    "words/2/62/index.html": {
+      "path": "words/2/62"
+    },
+    "words/2/58/index.html": {
+      "path": "words/2/58"
+    },
+    "words/2/65/index.html": {
+      "path": "words/2/65"
+    },
+    "words/2/64/index.html": {
+      "path": "words/2/64"
+    },
+    "words/2/63/index.html": {
+      "path": "words/2/63"
+    },
+    "words/2/61/index.html": {
+      "path": "words/2/61"
+    },
+    "words/2/66/index.html": {
+      "path": "words/2/66"
+    },
+    "words/2/67/index.html": {
+      "path": "words/2/67"
+    },
+    "words/2/69/index.html": {
+      "path": "words/2/69"
+    },
+    "words/2/70/index.html": {
+      "path": "words/2/70"
+    },
+    "words/2/72/index.html": {
+      "path": "words/2/72"
+    },
+    "words/2/68/index.html": {
+      "path": "words/2/68"
+    },
+    "words/2/57/index.html": {
+      "path": "words/2/57"
+    },
+    "words/2/71/index.html": {
+      "path": "words/2/71"
+    },
+    "words/2/73/index.html": {
+      "path": "words/2/73"
+    },
+    "words/2/75/index.html": {
+      "path": "words/2/75"
+    },
+    "words/2/74/index.html": {
+      "path": "words/2/74"
+    },
+    "words/2/76/index.html": {
+      "path": "words/2/76"
+    },
+    "words/2/53/index.html": {
+      "path": "words/2/53"
+    },
+    "words/2/77/index.html": {
+      "path": "words/2/77"
+    },
+    "words/2/79/index.html": {
+      "path": "words/2/79"
+    },
+    "words/2/81/index.html": {
+      "path": "words/2/81"
+    },
+    "words/2/80/index.html": {
+      "path": "words/2/80"
+    },
+    "words/2/82/index.html": {
+      "path": "words/2/82"
+    },
+    "words/2/78/index.html": {
+      "path": "words/2/78"
+    },
+    "words/2/83/index.html": {
+      "path": "words/2/83"
+    },
+    "words/2/84/index.html": {
+      "path": "words/2/84"
+    },
+    "words/2/85/index.html": {
+      "path": "words/2/85"
+    },
+    "words/2/87/index.html": {
+      "path": "words/2/87"
+    },
+    "words/2/54/index.html": {
+      "path": "words/2/54"
+    },
+    "words/2/86/index.html": {
+      "path": "words/2/86"
+    },
+    "words/2/88/index.html": {
+      "path": "words/2/88"
+    },
+    "words/2/89/index.html": {
+      "path": "words/2/89"
+    },
+    "words/2/90/index.html": {
+      "path": "words/2/90"
+    },
+    "words/2/91/index.html": {
+      "path": "words/2/91"
+    },
+    "words/2/92/index.html": {
+      "path": "words/2/92"
+    },
+    "words/2/93/index.html": {
+      "path": "words/2/93"
+    },
+    "words/2/94/index.html": {
+      "path": "words/2/94"
+    },
+    "words/2/97/index.html": {
+      "path": "words/2/97"
+    },
+    "words/2/99/index.html": {
+      "path": "words/2/99"
+    },
+    "words/2/96/index.html": {
+      "path": "words/2/96"
+    },
+    "words/2/98/index.html": {
+      "path": "words/2/98"
+    },
+    "words/2/100/index.html": {
+      "path": "words/2/100"
+    },
+    "words/2/95/index.html": {
+      "path": "words/2/95"
+    },
+    "words/3/1/index.html": {
+      "path": "words/3/1"
+    },
+    "words/3/2/index.html": {
+      "path": "words/3/2"
+    },
+    "words/3/3/index.html": {
+      "path": "words/3/3"
+    },
+    "words/3/6/index.html": {
+      "path": "words/3/6"
+    },
+    "words/3/5/index.html": {
+      "path": "words/3/5"
+    },
+    "words/3/9/index.html": {
+      "path": "words/3/9"
+    },
+    "words/3/4/index.html": {
+      "path": "words/3/4"
+    },
+    "words/3/13/index.html": {
+      "path": "words/3/13"
+    },
+    "words/3/8/index.html": {
+      "path": "words/3/8"
+    },
+    "words/3/7/index.html": {
+      "path": "words/3/7"
+    },
+    "words/3/10/index.html": {
+      "path": "words/3/10"
+    },
+    "words/3/12/index.html": {
+      "path": "words/3/12"
+    },
+    "words/3/18/index.html": {
+      "path": "words/3/18"
+    },
+    "words/3/14/index.html": {
+      "path": "words/3/14"
+    },
+    "words/3/20/index.html": {
+      "path": "words/3/20"
+    },
+    "words/3/17/index.html": {
+      "path": "words/3/17"
+    },
+    "words/3/21/index.html": {
+      "path": "words/3/21"
+    },
+    "words/3/19/index.html": {
+      "path": "words/3/19"
+    },
+    "words/3/22/index.html": {
+      "path": "words/3/22"
+    },
+    "words/3/16/index.html": {
+      "path": "words/3/16"
+    },
+    "words/3/15/index.html": {
+      "path": "words/3/15"
+    },
+    "words/3/11/index.html": {
+      "path": "words/3/11"
+    },
+    "words/3/25/index.html": {
+      "path": "words/3/25"
+    },
+    "words/3/29/index.html": {
+      "path": "words/3/29"
+    },
+    "words/3/24/index.html": {
+      "path": "words/3/24"
+    },
+    "words/3/30/index.html": {
+      "path": "words/3/30"
+    },
+    "words/3/23/index.html": {
+      "path": "words/3/23"
+    },
+    "words/3/27/index.html": {
+      "path": "words/3/27"
+    },
+    "words/3/31/index.html": {
+      "path": "words/3/31"
+    },
+    "words/3/36/index.html": {
+      "path": "words/3/36"
+    },
+    "words/3/34/index.html": {
+      "path": "words/3/34"
+    },
+    "words/3/38/index.html": {
+      "path": "words/3/38"
+    },
+    "words/3/28/index.html": {
+      "path": "words/3/28"
+    },
+    "words/3/37/index.html": {
+      "path": "words/3/37"
+    },
+    "words/3/39/index.html": {
+      "path": "words/3/39"
+    },
+    "words/3/43/index.html": {
+      "path": "words/3/43"
+    },
+    "words/3/41/index.html": {
+      "path": "words/3/41"
+    },
+    "words/3/40/index.html": {
+      "path": "words/3/40"
+    },
+    "words/3/44/index.html": {
+      "path": "words/3/44"
+    },
+    "words/3/45/index.html": {
+      "path": "words/3/45"
+    },
+    "words/3/35/index.html": {
+      "path": "words/3/35"
+    },
+    "words/3/46/index.html": {
+      "path": "words/3/46"
+    },
+    "words/3/33/index.html": {
+      "path": "words/3/33"
+    },
+    "words/3/47/index.html": {
+      "path": "words/3/47"
+    },
+    "words/3/49/index.html": {
+      "path": "words/3/49"
+    },
+    "words/3/48/index.html": {
+      "path": "words/3/48"
+    },
+    "words/3/26/index.html": {
+      "path": "words/3/26"
+    },
+    "words/3/32/index.html": {
+      "path": "words/3/32"
+    },
+    "words/3/42/index.html": {
+      "path": "words/3/42"
+    },
+    "words/3/50/index.html": {
+      "path": "words/3/50"
+    },
+    "words/3/51/index.html": {
+      "path": "words/3/51"
+    },
+    "words/3/52/index.html": {
+      "path": "words/3/52"
+    },
+    "words/3/54/index.html": {
+      "path": "words/3/54"
+    },
+    "words/3/53/index.html": {
+      "path": "words/3/53"
+    },
+    "words/3/56/index.html": {
+      "path": "words/3/56"
+    },
+    "words/3/55/index.html": {
+      "path": "words/3/55"
+    },
+    "words/3/61/index.html": {
+      "path": "words/3/61"
+    },
+    "words/3/57/index.html": {
+      "path": "words/3/57"
+    },
+    "words/3/58/index.html": {
+      "path": "words/3/58"
+    },
+    "words/3/60/index.html": {
+      "path": "words/3/60"
+    },
+    "words/3/62/index.html": {
+      "path": "words/3/62"
+    },
+    "words/3/59/index.html": {
+      "path": "words/3/59"
+    },
+    "words/3/63/index.html": {
+      "path": "words/3/63"
+    },
+    "words/3/64/index.html": {
+      "path": "words/3/64"
+    },
+    "words/3/65/index.html": {
+      "path": "words/3/65"
+    },
+    "words/3/68/index.html": {
+      "path": "words/3/68"
+    },
+    "words/3/67/index.html": {
+      "path": "words/3/67"
+    },
+    "words/3/71/index.html": {
+      "path": "words/3/71"
+    },
+    "words/3/66/index.html": {
+      "path": "words/3/66"
+    },
+    "words/3/69/index.html": {
+      "path": "words/3/69"
+    },
+    "words/3/70/index.html": {
+      "path": "words/3/70"
+    },
+    "words/3/73/index.html": {
+      "path": "words/3/73"
+    },
+    "words/3/72/index.html": {
+      "path": "words/3/72"
+    },
+    "words/3/74/index.html": {
+      "path": "words/3/74"
+    },
+    "words/3/76/index.html": {
+      "path": "words/3/76"
+    },
+    "words/3/75/index.html": {
+      "path": "words/3/75"
+    },
+    "words/3/77/index.html": {
+      "path": "words/3/77"
+    },
+    "words/3/78/index.html": {
+      "path": "words/3/78"
+    },
+    "words/3/81/index.html": {
+      "path": "words/3/81"
+    },
+    "words/3/82/index.html": {
+      "path": "words/3/82"
+    },
+    "words/3/79/index.html": {
+      "path": "words/3/79"
+    },
+    "words/3/83/index.html": {
+      "path": "words/3/83"
+    },
+    "words/3/84/index.html": {
+      "path": "words/3/84"
+    },
+    "words/3/85/index.html": {
+      "path": "words/3/85"
+    },
+    "words/3/80/index.html": {
+      "path": "words/3/80"
+    },
+    "words/3/86/index.html": {
+      "path": "words/3/86"
+    },
+    "words/3/88/index.html": {
+      "path": "words/3/88"
+    },
+    "words/3/92/index.html": {
+      "path": "words/3/92"
+    },
+    "words/3/89/index.html": {
+      "path": "words/3/89"
+    },
+    "words/3/95/index.html": {
+      "path": "words/3/95"
+    },
+    "words/3/93/index.html": {
+      "path": "words/3/93"
+    },
+    "words/3/87/index.html": {
+      "path": "words/3/87"
+    },
+    "words/3/94/index.html": {
+      "path": "words/3/94"
+    },
+    "words/3/96/index.html": {
+      "path": "words/3/96"
+    },
+    "words/3/100/index.html": {
+      "path": "words/3/100"
+    },
+    "words/3/97/index.html": {
+      "path": "words/3/97"
+    },
+    "words/3/98/index.html": {
+      "path": "words/3/98"
+    },
+    "words/3/90/index.html": {
+      "path": "words/3/90"
+    },
+    "words/3/91/index.html": {
+      "path": "words/3/91"
+    },
+    "words/3/99/index.html": {
+      "path": "words/3/99"
+    }
+  },
   "routes": [
     {
       "headers": {
@@ -19,6 +932,14 @@
         "cache-control": "public, max-age=1, immutable"
       },
       "src": "/_nuxt/builds/(.*)"
+    },
+    {
+      "headers": {
+        "Content-Type": "text/xml; charset=UTF-8",
+        "Cache-Control": "public, max-age=600, must-revalidate",
+        "X-Sitemap-Prerendered": "2026-08-11T17:56:39.377Z"
+      },
+      "src": "/sitemap.xml"
     },
     {
       "headers": {
@@ -62,50 +983,6 @@
     },
     {
       "handle": "filesystem"
-    },
-    {
-      "src": "(?<__isr_route>/__nuxt_error)",
-      "dest": "/__fallback"
-    },
-    {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
-    },
-    {
-      "src": "/__sitemap__/style.xsl",
-      "dest": "/__sitemap__/style.xsl"
-    },
-    {
-      "src": "/__nuxt_error",
-      "dest": "/__nuxt_error"
-    },
-    {
-      "src": "/",
-      "dest": "/index"
-    },
-    {
-      "src": "/words/(?<book>[^/]+)/(?<word>[^/]+)",
-      "dest": "/words/[book]/[word]"
-    },
-    {
-      "src": "/words/(?<book>[^/]+)",
-      "dest": "/words/[book]"
-    },
-    {
-      "src": "/api/_nuxt_icon/(?<collection>[^/]+)",
-      "dest": "/api/_nuxt_icon/[collection]"
-    },
-    {
-      "src": "/?(?<all>.+)",
-      "dest": "/[...all]"
-    },
-    {
-      "src": "/__nuxt_island/(?:.*)",
-      "dest": "/__nuxt_island/[...]"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/__fallback"
     }
   ]
 }
