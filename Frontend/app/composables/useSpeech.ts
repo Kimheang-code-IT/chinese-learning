@@ -1,54 +1,45 @@
-import { ref } from 'vue'
 import type { ComputedRef } from 'vue'
-import { playAudioSafe } from '~/utils/audio'
-import { handleAudioError } from '~/utils/error'
-
-// Type definitions
-type SpeechCallback = (() => void) | undefined
 
 type WordLike = {
   hanzi?: string
   sentenceHanzi?: string
-  sentenceKhmer?: string
 }
 
-export function useSpeech(
-  word: ComputedRef<WordLike>,
-  chars: ComputedRef<string[]>
-) {
+type SpeechCallback = (() => void) | undefined
+
+export function useSpeech(word: ComputedRef<WordLike>) {
   const isPlayingSound = ref(false)
   const isPlayingChineseSentence = ref(false)
-  const isPlayingKhmerSentence = ref(false)
   const showSoundBlockedDialog = ref(false)
 
   function canUseSpeechSynthesis(): boolean {
     return (
       import.meta.client &&
-      typeof window !== "undefined" &&
-      "speechSynthesis" in window &&
-      "SpeechSynthesisUtterance" in window
+      typeof window !== 'undefined' &&
+      'speechSynthesis' in window &&
+      'SpeechSynthesisUtterance' in window
     )
   }
 
   function resolveVoiceForLang(lang: string): SpeechSynthesisVoice | null {
-    if (!import.meta.client || !("speechSynthesis" in window)) return null
+    if (!import.meta.client || !('speechSynthesis' in window)) return null
     const voices = window.speechSynthesis.getVoices()
     if (!voices.length) return null
     const wanted = lang.toLowerCase()
-    const base = wanted.split("-")[0] || wanted
+    const base = wanted.split('-')[0] || wanted
     const exact = voices.find(v => v.lang?.toLowerCase() === wanted)
     if (exact) return exact
     const sameLang = voices.filter(v => v.lang?.toLowerCase().startsWith(`${base}-`))
-    if (base === "zh" && sameLang.length) {
-      const preferredZhName = ["xiaoxiao","xiaoyi","tingting","yunxi","mandarin","chinese","google"]
-      const naturalZh = sameLang.find(v => preferredZhName.some(k => (v.name || "").toLowerCase().includes(k)))
+    if (base === 'zh' && sameLang.length) {
+      const preferredZhName = ['xiaoxiao', 'xiaoyi', 'tingting', 'yunxi', 'mandarin', 'chinese', 'google']
+      const naturalZh = sameLang.find(v => preferredZhName.some(k => (v.name || '').toLowerCase().includes(k)))
       if (naturalZh) return naturalZh
       const localZh = sameLang.find(v => v.localService)
       if (localZh) return localZh
       return sameLang[0] || null
     }
     if (sameLang.length) return sameLang.find(v => v.localService) || sameLang[0] || null
-    return voices.find(v => (v.lang || "").toLowerCase().includes(base)) || voices[0] || null
+    return voices.find(v => (v.lang || '').toLowerCase().includes(base)) || voices[0] || null
   }
 
   function speak(
@@ -74,8 +65,6 @@ export function useSpeech(
     const runSpeak = () => {
       utterance.voice = resolveVoiceForLang(lang)
       synth.cancel()
-      
-      // Tiny delay to ensure previous speech is canceled before starting new one
       setTimeout(() => {
         synth.resume?.()
         synth.speak(utterance)
@@ -86,12 +75,12 @@ export function useSpeech(
       return true
     }
     const voiceReadyHandler = () => {
-      synth.removeEventListener("voiceschanged", voiceReadyHandler)
+      synth.removeEventListener('voiceschanged', voiceReadyHandler)
       runSpeak()
     }
-    synth.addEventListener("voiceschanged", voiceReadyHandler)
+    synth.addEventListener('voiceschanged', voiceReadyHandler)
     setTimeout(() => {
-      synth.removeEventListener("voiceschanged", voiceReadyHandler)
+      synth.removeEventListener('voiceschanged', voiceReadyHandler)
       runSpeak()
     }, 250)
     return true
@@ -101,45 +90,23 @@ export function useSpeech(
     if (!word.value.hanzi) return
     speak(
       word.value.hanzi,
-      "zh-CN",
+      'zh-CN',
       () => { isPlayingSound.value = true },
       () => { isPlayingSound.value = false },
       0.56
     )
   }
 
-  function playCharPronunciation(index: number): void {
-    const char = chars.value[index]
-    if (!char) return
-    const played = speak(char, "zh-CN", undefined, undefined, 0.5)
-    if (!played) showSoundBlockedDialog.value = true
-  }
-
   function playExampleSentenceChinese(): void {
-    const sentenceText = word.value.sentenceHanzi?.trim() || "我有一个弟弟。"
+    const sentenceText = word.value.sentenceHanzi?.trim() || '我有一个弟弟。'
     const played = speak(
       sentenceText,
-      "zh-CN",
+      'zh-CN',
       () => { isPlayingChineseSentence.value = true },
       () => { isPlayingChineseSentence.value = false },
       0.55
     )
     if (!played) showSoundBlockedDialog.value = true
-  }
-
-  function playExampleSentenceKhmer(): void {
-    if (!word.value.sentenceKhmer) return
-    speak(
-      word.value.sentenceKhmer,
-      "km-KH",
-      () => { isPlayingKhmerSentence.value = true },
-      () => { isPlayingKhmerSentence.value = false }
-    )
-  }
-
-  function playSpeech(src: string) {
-    const audio = new Audio(src)
-    playAudioSafe(audio).catch(handleAudioError)
   }
 
   function openInBrowser(): void {
@@ -149,12 +116,8 @@ export function useSpeech(
   return {
     isPlayingSound,
     isPlayingChineseSentence,
-    isPlayingKhmerSentence,
     playPronunciation,
-    playCharPronunciation,
     playExampleSentenceChinese,
-    playExampleSentenceKhmer,
-    playSpeech,
     showSoundBlockedDialog,
     openInBrowser
   }

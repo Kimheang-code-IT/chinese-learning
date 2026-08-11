@@ -1,8 +1,6 @@
 <script setup lang="ts">
-const router = useRouter()
-onMounted(() => {
-  router.replace('/')
-})
+// Unknown routes → home (does not match /words/:book or /words/:book/:word)
+await navigateTo('/', { replace: true })
 </script>
 
 <template>

@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useColorMode, useHead, useSeoMeta } from '#imports'
+
+const BRAND = 'រៀនកុំព្យូទ័រ'
 const colorMode = useColorMode()
-const color = computed(() => colorMode.value === 'dark' ? '#3d3b3a' : 'white')
+const color = computed(() => colorMode.value === 'dark' ? '#0f172a' : '#fff7ed')
 
 useHead({
-  title: 'រៀនភាសាចិនជាមួយដំណាក់សិក្សា',
+  title: `${BRAND} - រៀនភាសាចិន`,
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - រៀនភាសាចិនជាមួយដំណាក់សិក្សា` : 'រៀនភាសាចិនជាមួយដំណាក់សិក្សា';
+    return titleChunk ? `${titleChunk} - ${BRAND}` : `${BRAND} - រៀនភាសាចិន`
   },
   meta: [
     { charset: 'utf-8' },
@@ -15,8 +17,7 @@ useHead({
     { key: 'theme-color', name: 'theme-color', content: () => color.value }
   ],
   link: [
-    { rel: 'icon', type: 'image/png', href: '/logo.png' },
-    { rel: 'canonical', href: 'https://chinese.domnakseuksa.com' }
+    { rel: 'icon', type: 'image/png', href: '/logo.png' }
   ],
   htmlAttrs: {
     lang: 'km'
@@ -25,36 +26,33 @@ useHead({
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "EducationalOrganization",
-        "name": "ដំណាក់សិក្សា",
-        "url": "https://chinese.domnakseuksa.com",
-        "description": "រៀនភាសាចិនជាមួយគំនូសអក្សរចិន ការអាន និងការសរសេរ"
+        '@context': 'https://schema.org',
+        '@type': 'EducationalOrganization',
+        name: BRAND,
+        description: 'រៀនភាសាចិនជាមួយន័យខ្មែរ'
       })
     }
   ]
 })
 
 useSeoMeta({
-  ogTitle: 'រៀនភាសាចិនជាមួយដំណាក់សិក្សា',
-  description: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ គំនូសអក្សរចិន និងភីងអ៊ីន។',
-  ogDescription: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ គំនូសអក្សរចិន និងភីងអ៊ីន។',
+  ogTitle: `${BRAND} - រៀនភាសាចិន`,
+  description: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ។',
+  ogDescription: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ។',
   twitterCard: 'summary_large_image',
-  ogSiteName: 'ដំណាក់សិក្សា',
+  ogSiteName: BRAND,
   ogLocale: 'km_KH',
   ogType: 'website',
   ogImage: '/logo.png',
   robots: 'index, follow'
 })
-// Auth state is now handled globally by the plugins/auth.ts and stores/auth.ts
-// No need for manual onMounted auth checks here
 </script>
 
 <template>
   <UApp>
-    <NuxtLoadingIndicator />
+    <NuxtLoadingIndicator color="#0d9488" />
     <NuxtLayout>
-      <NuxtPage />
+      <NuxtPage :page-key="route => route.fullPath" />
     </NuxtLayout>
   </UApp>
 </template>

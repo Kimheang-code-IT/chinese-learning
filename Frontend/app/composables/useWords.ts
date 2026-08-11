@@ -43,39 +43,54 @@ function mapWords(items: RawWord[]): WordItem[] {
 
 const books: Record<number, BookData> = {
   1: {
-    title: 'Book 01 Chinese Words ( 汉字笔画 )',
-    subtitle: 'Chinese Character Strokes - Words 1-100',
+    title: 'សៀវភៅភាគ០១',
+    subtitle: 'ពាក្យមូលដ្ឋាន ១–១០០',
     words: mapWords((wordData as RawWord[]).slice(0, 100))
   },
   2: {
-    title: 'Book 02 Chinese Words ( 基础词汇 )',
-    subtitle: 'Foundation Vocabulary - Words 101-200',
+    title: 'សៀវភៅភាគ០២',
+    subtitle: 'ពាក្យមូលដ្ឋាន ១០១–២០០',
     words: mapWords((wordData as RawWord[]).slice(100, 200))
   },
   3: {
-    title: 'Book 03 Chinese Words ( 进阶词汇 )',
-    subtitle: 'Intermediate Vocabulary - Words 201-300',
+    title: 'សៀវភៅភាគ០៣',
+    subtitle: 'ពាក្យកម្រិតខ្ពស់ ២០១–៣០០',
     words: mapWords((wordData as RawWord[]).slice(200, 300))
   }
 }
 
-export function useWords() {
-  const getBook = (bookNo: number): BookData => books[bookNo] || books[1]!
+export const BOOK_NUMBERS = [1, 2, 3] as const
 
-  const getWord = (bookNo: number, wordNo: number): WordItem => {
-    const book = getBook(bookNo)
-    const index = Math.max(0, wordNo - 1)
-    return book.words[index] || book.words[0] || {
-      hanzi: '一',
-      pinyin: 'yī',
-      khmer_pinyin: 'អ៊ី',
-      english: 'One',
-      khmer: 'មួយ'
-    }
+export function parseRouteParam(value: unknown): number {
+  const raw = Array.isArray(value) ? value[0] : value
+  const n = Number(raw)
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 0
+}
+
+export function isValidBookNo(bookNo: number): boolean {
+  return BOOK_NUMBERS.includes(bookNo as 1 | 2 | 3)
+}
+
+export function useWords() {
+  const getBook = (bookNo: number): BookData | null => {
+    if (!isValidBookNo(bookNo)) return null
+    return books[bookNo] || null
   }
+
+  const getWord = (bookNo: number, wordNo: number): WordItem | null => {
+    const book = getBook(bookNo)
+    if (!book) return null
+    const index = wordNo - 1
+    if (index < 0 || index >= book.words.length) return null
+    return book.words[index] || null
+  }
+
+  const getWordCount = (bookNo: number): number => getBook(bookNo)?.words.length || 0
 
   return {
     getBook,
-    getWord
+    getWord,
+    getWordCount,
+    isValidBookNo
   }
 }

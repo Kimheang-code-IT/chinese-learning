@@ -1,124 +1,195 @@
 <script setup lang="ts">
-import { useAuth } from '~/composables/useAuth'
-import { useBookAccess } from '~/composables/useBookAccess'
+import heroImage from '~/assets/images/hero.png'
 
-type FeatureItem = {
-  title: string
-  description: string
-  icon?: string
-  image?: string
+type BookItem = {
+  label: string
+  chinese: string
   bookNumber: number
+  strokeClass: string
 }
 
-const featureSection = {
-  title: 'ចាប់ផ្តើមរៀនភាសាចិន',
-  description: 'សូមជ្រើសផ្នែកខាងក្រោមដើម្បីចាប់ផ្តើមហាត់សម្រួលពាក្យ និងការបញ្ចេញសំឡេង។',
-  items: [
-    {
-      title: 'សៀវភៅគំនូសអក្សរចិន ភាគ០១',
-      description: 'បញ្ញីពាក្យអក្សរចិនមូលដ្ឋាន - ចំនួន​ ១០០ពាក្យ',
-      icon: 'i-lucide-book-open',
-      image: '/Book1.svg',
-      bookNumber: 1
-    },
-    {
-      title: 'សៀវភៅគំនូសអក្សរចិន ភាគ០២',
-      description: 'បញ្ញីពាក្យអក្សរចិនមូលដ្ឋាន - ចំនួន​ ១០០ពាក្យ',
-      icon: 'i-lucide-book-open',
-      image: '/Book2.svg',
-      bookNumber: 2
-    },
-    {
-      title: 'សៀវភៅគំនូសអក្សរចិន ភាគ០៣',
-      description: 'បញ្ញីពាក្យអក្សរចិនមូលដ្ឋាន - ចំនួន​ ១០០ពាក្យ',
-      icon: 'i-lucide-book-open',
-      image: '/Book3.svg',
-      bookNumber: 3
-    }
-  ] satisfies FeatureItem[]
-}
+const books: BookItem[] = [
+  {
+    label: 'ភាគ ០១',
+    chinese: '基础',
+    bookNumber: 1,
+    strokeClass: 'bg-sky-200'
+  },
+  {
+    label: 'ភាគ ០២',
+    chinese: '进阶',
+    bookNumber: 2,
+    strokeClass: 'bg-emerald-200'
+  },
+  {
+    label: 'ភាគ ០៣',
+    chinese: '提高',
+    bookNumber: 3,
+    strokeClass: 'bg-amber-200'
+  }
+]
 
-const auth = useAuth()
-const { canAccessBook } = useBookAccess()
+const { query, searchResults, onSearchInput, clearSearch } = useSearch()
 
-const fallbackCardImages = ['/Book1.svg', '/Book2.svg', '/Book3.svg']
+const heroQuery = computed({
+  get: () => query.value,
+  set: (val: string) => onSearchInput(val)
+})
 
-const getCardImage = (item: FeatureItem, index: number) => {
-  return item.image || fallbackCardImages[index % fallbackCardImages.length]
-}
-
-useChineseLearning()
+const showResults = computed(() => heroQuery.value.trim().length > 0)
 
 useSeoMeta({
-  title: 'ទំព័រដើម - រៀនភាសាចិន',
-  ogTitle: 'ដំណាក់សិក្សា - រៀនភាសាចិនជាមួយន័យខ្មែរ',
-  description: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ និងគំនូសអក្សរចិនបានយ៉ាងងាយស្រួល។',
-  ogDescription: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ និងគំនូសអក្សរចិនបានយ៉ាងងាយស្រួល។',
+  title: 'ទំព័រដើម',
+  ogTitle: 'រៀនកុំព្យូទ័រ - រៀនភាសាចិន',
+  description: 'រៀនវាក្យសព្ទភាសាចិនជាមួយន័យខ្មែរ។',
   ogImage: '/logo.png',
   twitterImage: '/logo.png'
 })
 </script>
 
 <template>
-  <div class="space-y-12 pb-20">
-    <UPageSection :title="featureSection.title" :description="featureSection.description"
-      :ui="{ title: 'mb-1 lg:mb-3', description: 'mt-0 lg:mt-2' }" class="-mt-10">
-      <UPageGrid class="gap-4 lg:gap-6">
+  <div class="pb-12">
+    <section class="bg-teal-600 dark:bg-teal-700">
+      <UContainer
+        class="flex flex-col items-center gap-4 py-6 sm:gap-5 sm:py-8 lg:grid lg:grid-cols-2 lg:grid-rows-[auto_auto] lg:items-center lg:gap-x-8 lg:gap-y-4"
+      >
+        <h1
+          class="order-2 text-center text-2xl font-extrabold text-white sm:text-3xl lg:order-none lg:col-start-1 lg:row-start-1 lg:justify-self-start lg:text-left lg:text-4xl"
+        >
+          រៀនវាក្យសព្ទភាសាចិន
+          <span class="chinese-char ml-1 text-teal-100">学中文</span>
+        </h1>
 
-        <template v-for="(item, index) in featureSection.items" :key="index">
-          <!-- Accessible book: clickable card -->
-          <NuxtLink
-            v-if="!auth.isAuthenticated.value || canAccessBook(item.bookNumber)"
-            :to="`/words/${item.bookNumber}`"
-            class="block group"
+        <img
+          :src="heroImage"
+          alt=""
+          class="order-1 mx-auto max-h-28 w-auto object-contain drop-shadow-lg sm:max-h-36 lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-h-52 lg:justify-self-center"
+          width="600"
+          height="400"
+          decoding="async"
+          fetchpriority="high"
+        >
+
+        <div
+          class="relative order-3 w-full max-w-md lg:order-none lg:col-start-1 lg:row-start-2 lg:justify-self-start"
+        >
+          <UInput
+            v-model="heroQuery"
+            size="xl"
+            icon="i-lucide-search"
+            placeholder="ស្វែងរកពាក្យ…"
+            class="w-full"
+            autocomplete="off"
+            :ui="{
+              base: 'bg-white text-highlighted ring-0 focus-visible:ring-2 focus-visible:ring-white/60'
+            }"
           >
-            <UPageCard
-              :title="item.title"
-              :description="item.description"
-              :icon="item.icon"
-              :ui="{
-                root: 'relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-linear-to-br from-surface to-elevated/30 border-default hover:border-primary/40',
-                body: 'relative z-10',
-                header: 'relative z-10'
-              }"
-              spotlight
-              class="cursor-pointer"
+            <template #trailing>
+              <UButton
+                v-if="heroQuery"
+                icon="i-lucide-x"
+                color="neutral"
+                variant="ghost"
+                size="sm"
+                class="rounded-full"
+                aria-label="សម្អាត"
+                @click="clearSearch()"
+              />
+            </template>
+          </UInput>
+
+          <UCard
+            v-if="showResults"
+            class="absolute inset-x-0 top-full z-30 mt-2 max-h-72 overflow-y-auto shadow-xl"
+            :ui="{ body: 'p-2' }"
+          >
+            <p v-if="!searchResults.length" class="px-3 py-4 text-sm text-muted">
+              រកមិនឃើញពាក្យទេ
+            </p>
+            <ul v-else class="space-y-1">
+              <li
+                v-for="item in searchResults"
+                :key="`${item.bookNo}-${item.wordIndex}`"
+              >
+                <UButton
+                  :to="`/words/${item.bookNo}/${item.wordIndex}`"
+                  color="neutral"
+                  variant="ghost"
+                  block
+                  class="h-auto! justify-start px-3 py-2.5"
+                  @click="clearSearch()"
+                >
+                  <div class="flex w-full items-center gap-3 text-left">
+                    <span class="chinese-char shrink-0 text-2xl text-teal-600">
+                      {{ item.word.hanzi }}
+                    </span>
+                    <div class="min-w-0 flex-1">
+                      <div class="truncate text-sm font-medium">
+                        {{ item.word.pinyin }}
+                        <span class="font-normal text-muted"> · {{ item.word.khmer }}</span>
+                      </div>
+                      <div class="truncate text-xs text-muted">
+                        សៀវភៅភាគ {{ item.bookNo }}
+                      </div>
+                    </div>
+                    <UIcon name="i-lucide-chevron-right" class="size-4 shrink-0 text-muted" />
+                  </div>
+                </UButton>
+              </li>
+            </ul>
+          </UCard>
+        </div>
+      </UContainer>
+    </section>
+
+    <UPageSection
+      :ui="{
+        container: 'py-8 sm:py-10',
+        title: 'mb-1',
+        description: 'mt-1'
+      }"
+    >
+      <UPageGrid>
+        <NuxtLink
+          v-for="book in books"
+          :key="book.bookNumber"
+          :to="`/words/${book.bookNumber}`"
+          class="block transition-transform duration-200 hover:-translate-y-1"
+        >
+          <UPageCard
+            variant="solid"
+            class="min-h-44 h-full"
+            :ui="{
+              root: 'relative overflow-hidden rounded-xl bg-neutral-950 ring-0 shadow-lg bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] bg-size-[14px_14px]',
+              container: 'items-center justify-center text-center py-9 sm:py-10',
+              title: 'sr-only',
+              description: 'sr-only'
+            }"
+          >
+            <div
+              class="absolute left-3 top-3 flex h-11 w-9 flex-col items-center justify-center rounded-sm bg-red-600 text-white shadow-md ring-1 ring-red-400/40"
+              aria-hidden="true"
             >
-              <NuxtImg :src="getCardImage(item, index)" :alt="`${item.title} image`"
-                class="pointer-events-none select-none absolute right-5 top-2 w-20 rotate-12 opacity-20 transition-all duration-500 group-hover:rotate-0 group-hover:scale-110 group-hover:opacity-40"
-                loading="lazy" />
-            </UPageCard>
-          </NuxtLink>
+              <span class="text-[9px] font-black leading-none tracking-wide">PDF</span>
+              <UIcon name="i-lucide-arrow-down" class="mt-0.5 size-4 stroke-[3]" />
+            </div>
 
-          <!-- Locked book: non-clickable card with lock overlay -->
-          <div v-else class="block relative opacity-60 cursor-not-allowed select-none" :title="`អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យចូលមើលសៀវភៅនេះ`">
-            <UPageCard
-              :title="item.title"
-              :description="item.description"
-              :icon="item.icon"
-              :ui="{
-                root: 'relative overflow-hidden border-default bg-linear-to-br from-surface to-elevated/30 grayscale',
-                body: 'relative z-10',
-                header: 'relative z-10'
-              }"
-            >
-              <NuxtImg :src="getCardImage(item, index)" :alt="`${item.title} image`"
-                class="pointer-events-none select-none absolute right-5 top-2 w-20 rotate-12 opacity-10"
-                loading="lazy" />
+            <span class="chinese-char absolute right-3 top-3 text-sm text-red-400/90">
+              {{ book.chinese }}
+            </span>
 
-              <!-- Lock badge -->
-              <div class="absolute inset-0 flex items-center justify-center z-20 rounded-xl">
-                <div class="flex flex-col items-center gap-1 bg-surface/80 backdrop-blur-sm px-4 py-2 rounded-xl border border-default shadow">
-                  <UIcon name="i-lucide-lock" class="w-6 h-6 text-muted" />
-                  <span class="text-[11px] text-muted khmer-text font-medium">គ្មានការអនុញ្ញាត</span>
-                </div>
-              </div>
-            </UPageCard>
-          </div>
-        </template>
-
+            <div class="relative mx-auto mt-2 inline-flex min-w-40 items-center justify-center px-6 py-3">
+              <span
+                class="absolute inset-x-1 top-1/2 h-9 -translate-y-1/2 -rotate-2 rounded-[100%] opacity-95 blur-[0.3px]"
+                :class="book.strokeClass"
+              />
+              <span class="relative -rotate-1 text-2xl font-black tracking-tight text-black sm:text-[1.65rem]">
+                {{ book.label }}
+              </span>
+            </div>
+          </UPageCard>
+        </NuxtLink>
       </UPageGrid>
     </UPageSection>
   </div>
 </template>
-

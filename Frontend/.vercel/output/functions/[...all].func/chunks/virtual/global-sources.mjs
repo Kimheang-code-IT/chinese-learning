@@ -9,19 +9,7 @@ const sources = [
         },
         "urls": [
             {
-                "loc": "/admin"
-            },
-            {
                 "loc": "/"
-            },
-            {
-                "loc": "/login"
-            },
-            {
-                "loc": "/Pinyin"
-            },
-            {
-                "loc": "/Stocktype"
             }
         ],
         "sourceType": "app"

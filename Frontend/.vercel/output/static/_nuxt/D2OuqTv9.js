@@ -1,0 +1,1 @@
+import{a9 as o,l as s,B as e,w as _,r as c,aa as r,h as l,ab as d}from"./08V1BZal.js";const f={};function p(a,u){const n=d,t=r;return l(),s("div",null,[e(n),e(t,null,{default:_(()=>[c(a.$slots,"default")]),_:3})])}const i=o(f,[["render",p]]);export{i as default};

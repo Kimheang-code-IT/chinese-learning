@@ -2,14 +2,8 @@
   <div>
     <AppHeader />
 
-    <UMain class="pb-20 md:pb-0">
+    <UMain>
       <slot />
     </UMain>
-
-    <MobileTabBar />
-    
-    <ClientOnly>
-      <SearchDialog />
-    </ClientOnly>
   </div>
 </template>

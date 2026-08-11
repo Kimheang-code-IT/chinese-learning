@@ -1,18 +1,4 @@
 <script setup lang="ts">
-
-import { useAuth } from '~/composables/useAuth'
-const route = useRoute()
-const auth = useAuth()
-const isAuthenticated = auth.isAuthenticated
-
-// Pre-render navigation guard: allow only first 3 words for guest users
-if (!isAuthenticated.value && Number(route.params.word) > 3) {
-  navigateTo(`/words/${route.params.book}`)
-}
-
-const strokePreviewOpen = ref(false)
-const selectedStrokePreview = ref<{ char: string, stepNumber: number, svg: string } | null>(null)
-
 const {
   loading,
   error,
@@ -40,11 +26,6 @@ const {
   openInBrowser
 } = useWordDetail()
 
-function openStrokePreview(char: string, stepNumber: number, svg: string) {
-  selectedStrokePreview.value = { char, stepNumber, svg }
-  strokePreviewOpen.value = true
-}
-
 function getToneColorClassFromSyllable(syllable: string) {
   if (/[āēīōūǖ]/.test(syllable)) return 'text-red-600'
   if (/[áéíóúǘ]/.test(syllable)) return 'text-amber-600'
@@ -56,11 +37,11 @@ function getToneColorClassFromSyllable(syllable: string) {
 const sentenceCharPairs = computed(() => {
   const hanzi = word.value.sentenceHanzi || '我有一个弟弟。'
   const pinyinText = sentencePinyin.value || 'wǒ yǒu yí gè dì dì'
-  const chars = Array.from(hanzi)
+  const sentenceChars = Array.from(hanzi)
   const syllables = pinyinText.trim().split(/\s+/).filter(Boolean)
 
   let syllableIndex = 0
-  return chars.map(char => {
+  return sentenceChars.map((char) => {
     const isChineseChar = /[\u3400-\u9fff]/.test(char)
     const syllable = isChineseChar ? (syllables[syllableIndex++] || '') : ''
     return {
@@ -72,32 +53,38 @@ const sentenceCharPairs = computed(() => {
 })
 
 useSeoMeta({
-  title: () => `${word.value.hanzi} (${word.value.pinyin}) - ${word.value.english}`,
-  ogTitle: () => `${word.value.hanzi} (${word.value.pinyin}) - រៀនភាសាចិន`,
-  description: () => `រៀនពាក្យ "${word.value.hanzi}" មានន័យថា "${word.value.khmer}" ជាមួយដំណាក់សិក្សា។`,
-  ogDescription: () => `រៀនពាក្យ "${word.value.hanzi}" មានន័យថា "${word.value.khmer}" ជាមួយដំណាក់សិក្សា។`,
+  title: () => `${word.value.hanzi} (${word.value.pinyin}) - ${word.value.khmer}`,
+  ogTitle: () => `${word.value.hanzi} - រៀនកុំព្យូទ័រ`,
+  description: () => `រៀនពាក្យ "${word.value.hanzi}" មានន័យថា "${word.value.khmer}"។`,
+  ogDescription: () => `រៀនពាក្យ "${word.value.hanzi}" មានន័យថា "${word.value.khmer}"។`,
   ogImage: '/logo.png'
 })
 </script>
 
 <template>
-  <UPageSection class="-mt-16! sm:-mt-32!">
+  <div>
     <ConfirmDialog
       v-model="showSoundBlockedDialog"
       title="មិនអាចចាក់សម្លេងបានទេ"
-      description="កម្មវិធីនេះត្រូវការបើកនៅក្នុងកម្មវិធីរុករក (Browser) ដូចជា Chrome, Safari ឬ Edge ដើម្បីអាចចាក់សម្លេងបាន។ សូមបើកវេបសាយនេះក្នុងកម្មវិធីរុករក។"
+      description="កម្មវិធីនេះត្រូវការបើកនៅក្នុងកម្មវិធីរុករក ដូចជា Chrome, Safari ឬ Edge ដើម្បីអាចចាក់សម្លេងបាន។"
       confirm-label="បើកក្នុងកម្មវិធីរុករក"
       cancel-label="បិទ"
       confirm-color="primary"
       @confirm="openInBrowser"
     />
-    <div class="w-full sm:mx-auto sm:max-w-6xl">
-      <UCard class="rounded-none border-x-0 sm:rounded-sm sm:border-x">
+
+    <UContainer class="pb-8">
+      <UCard
+        :ui="{
+          root: 'overflow-hidden',
+          header: 'bg-elevated/50'
+        }"
+      >
         <template #header>
           <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 
             <div class="flex flex-wrap items-center gap-2 sm:gap-3">
-              <UButton :to="`/words/${bookNo}`" icon="i-lucide-arrow-left" variant="ghost" color="neutral">
+              <UButton :to="`/words/${bookNo}`" icon="i-lucide-arrow-left" variant="soft" color="neutral">
                 ត្រលប់ក្រោយ
               </UButton>
 
@@ -135,14 +122,19 @@ useSeoMeta({
               <div class="flex flex-col items-center gap-2">
                 <ClientOnly>
                   <div
-                    class="hanzi-grid relative h-37.5 w-37.5 overflow-hidden rounded-lg border border-default sm:h-45 sm:w-45"
+                    class="relative h-37.5 w-37.5 overflow-hidden rounded-lg border border-default bg-size-[18px_18px] bg-[linear-gradient(to_right,rgba(148,163,184,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.18)_1px,transparent_1px)] sm:h-45 sm:w-45"
                     :class="{
                       'ring-2 ring-primary/70 border-primary': activeQuizIndex === index,
                       'ring-2 ring-amber-400/60 border-amber-400': isAnimating
                     }">
                     <div :id="charWriterIds[index]" class="absolute inset-0 z-10 h-full w-full" />
 
-                    <transition name="success-fade">
+                    <Transition
+                      enter-active-class="transition-opacity duration-300"
+                      enter-from-class="opacity-0"
+                      leave-active-class="transition-opacity duration-300"
+                      leave-to-class="opacity-0"
+                    >
                       <div
 v-if="showSuccessAnimation === index"
                         class="absolute inset-0 z-20 pointer-events-none flex items-center justify-center" :class="[
@@ -151,7 +143,7 @@ v-if="showSuccessAnimation === index"
                         ]">
                         <div class="absolute inset-0 flex items-center justify-center">
                           <svg
-class="w-20 h-20 text-white animate-scale-in" fill="none" stroke="currentColor"
+class="size-20 scale-100 text-white transition-transform duration-500" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                           </svg>
@@ -160,15 +152,14 @@ class="w-20 h-20 text-white animate-scale-in" fill="none" stroke="currentColor"
                           <span class="text-white font-bold text-sm sm:text-base drop-shadow-lg">ត្រឹមត្រូវ!</span>
                         </div>
                       </div>
-                    </transition>
+                    </Transition>
                   </div>
 
                   <template #fallback>
                     <div
-                      class="hanzi-grid relative flex h-37.5 w-37.5 items-center justify-center overflow-hidden rounded-lg border border-default sm:h-45 sm:w-45 cursor-pointer transition-transform hover:scale-110 active:scale-105"
-                      title="ពង្រីកសម្រាប់សរសេរងាយ"
-                      @click="openStrokePreview(char, 1, '')">
-                      <span class="chinese-char writer-fallback-char">{{ char }}</span>
+                      class="relative flex h-37.5 w-37.5 items-center justify-center overflow-hidden rounded-lg border border-default bg-size-[18px_18px] bg-[linear-gradient(to_right,rgba(148,163,184,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.18)_1px,transparent_1px)] sm:h-45 sm:w-45"
+                    >
+                      <span class="chinese-char text-5xl leading-none text-red-600 sm:text-6xl">{{ char }}</span>
                     </div>
                   </template>
                 </ClientOnly>
@@ -185,11 +176,6 @@ class="w-20 h-20 text-white animate-scale-in" fill="none" stroke="currentColor"
                 <p class="text-sm font-semibold text-highlighted">អត្ថន័យជាភាសាខ្មែរ៖</p>
                 <p class="khmer-text pt-2 text-lg italic text-blue-600">{{ word.khmer }}</p>
               </div>
-
-              <div>
-                <p class="text-sm font-semibold text-highlighted">អត្ថន័យជាភាសាអង់គ្លេស៖</p>
-                <p class="pt-2 text-lg italic text-blue-600">{{ word.english }}</p>
-              </div>
             </div>
           </div>
 
@@ -203,16 +189,18 @@ class="w-20 h-20 text-white animate-scale-in" fill="none" stroke="currentColor"
               <div v-if="strokeOrderGroups.length" class="mt-4 space-y-4">
                 <div v-for="group in strokeOrderGroups" :key="group.char" class="space-y-2">
                   <div class="flex flex-wrap gap-2">
-                    <button
-v-for="(step, stepIndex) in group.steps" :key="`${group.char}-${stepIndex}`" type="button"
-                      class="hanzi-grid relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-lg border border-default bg-default text-left transition-transform hover:scale-105 hover:border-primary"
-                      @click="openStrokePreview(group.char, stepIndex + 1, step)">
+                    <div
+                      v-for="(step, stepIndex) in group.steps"
+                      :key="`${group.char}-${stepIndex}`"
+                      class="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-lg border border-default bg-default bg-size-[12px_12px] bg-[linear-gradient(to_right,rgba(148,163,184,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.18)_1px,transparent_1px)]"
+                    >
                       <span
-                        class="absolute left-0 top-0 z-10 rounded bg-default/90 px-1.5 py-0.5 text-[10px] font-semibold text-highlighted ring-1 ring-default">
+                        class="absolute left-0 top-0 z-10 rounded bg-default/90 px-1.5 py-0.5 text-[10px] font-semibold text-highlighted ring-1 ring-default"
+                      >
                         {{ stepIndex + 1 }}
                       </span>
                       <SafeInlineSvg :svg="step" class="h-full w-full" />
-                    </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -255,64 +243,6 @@ class="text-[11px] leading-none sm:text-xs"
           </div>
         </div>
       </UCard>
-    </div>
-
-  </UPageSection>
+    </UContainer>
+  </div>
 </template>
-
-<style scoped>
-.hanzi-grid {
-  background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.18) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.18) 1px, transparent 1px),
-    linear-gradient(to right, rgba(100, 116, 139, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(100, 116, 139, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom right, rgba(148, 163, 184, 0.22), rgba(148, 163, 184, 0));
-  background-size: 18px 18px, 18px 18px, 50% 100%, 100% 50%, 100% 100%;
-  background-position: 0 0, 0 0, center top, left center, center;
-}
-
-.chinese-char {
-  transform: translateY(-2%) !important;
-}
-
-.writer-fallback-char {
-  color: #dc2626;
-  line-height: 1;
-  font-size: clamp(2.75rem, 11vw, 4.75rem);
-}
-
-
-
-/* Success animation transitions */
-.success-fade-enter-active,
-.success-fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.success-fade-enter-from,
-.success-fade-leave-to {
-  opacity: 0;
-}
-
-/* Scale animation for checkmark */
-@keyframes scale-in {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.animate-scale-in {
-  animation: scale-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-</style>

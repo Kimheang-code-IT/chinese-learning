@@ -1,0 +1,1 @@
+import{J as a,O as n,l as o,Q as r,h as s}from"./08V1BZal.js";const i=a({__name:"[...all]",async setup(_){let e,t;return[e,t]=n(()=>r("/",{replace:!0})),await e,t(),(c,l)=>(s(),o("div"))}});export{i as default};

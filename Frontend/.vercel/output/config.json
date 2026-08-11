@@ -68,24 +68,8 @@
       "dest": "/__fallback"
     },
     {
-      "src": "/Stocktype",
-      "dest": "/Stocktype"
-    },
-    {
       "src": "/sitemap.xml",
       "dest": "/sitemap.xml"
-    },
-    {
-      "src": "/Pinyin",
-      "dest": "/Pinyin"
-    },
-    {
-      "src": "/login",
-      "dest": "/login"
-    },
-    {
-      "src": "/admin",
-      "dest": "/admin"
     },
     {
       "src": "/__sitemap__/style.xsl",

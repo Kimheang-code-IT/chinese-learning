@@ -10,7 +10,7 @@ defineProps({
 })
 
 useSeoMeta({
-  title: 'An error occurred'
+  title: 'មានបញ្ហា'
 })
 </script>
 
@@ -19,15 +19,19 @@ useSeoMeta({
     <AppHeader />
     <UMain>
       <UContainer>
-        <UPage>
-          <div class="flex flex-col items-center justify-center min-h-[60vh] py-12 text-center khmer-text">
-            <div v-if="$route.path !== '/favicon.ico'" class="w-40 h-40 mb-6 opacity-90 flex items-center justify-center">
-              <img :src="logo" alt="ដំណាក់សិក្សា" class="w-full h-full object-contain">
-            </div>
-            <h1 class="text-3xl font-bold text-error mb-2">អូ! មានបញ្ហាមួយកើតឡើង។</h1>
-            <UButton to="/" color="primary" icon="i-lucide-home" class="mt-14">ត្រឡប់ទៅទំព័រដើម</UButton>
-          </div>
-        </UPage>
+        <UPageCard
+          title="អូ! មានបញ្ហាមួយកើតឡើង។"
+          description="សូមព្យាយាមម្តងទៀត ឬត្រឡប់ទៅទំព័រដើម។"
+          variant="subtle"
+          class="mx-auto my-16 max-w-lg text-center"
+        >
+          <img :src="logo" alt="រៀនកុំព្យូទ័រ" class="mx-auto mb-4 size-28 object-contain">
+          <template #footer>
+            <UButton to="/" color="primary" icon="i-lucide-home" block>
+              ត្រឡប់ទៅទំព័រដើម
+            </UButton>
+          </template>
+        </UPageCard>
       </UContainer>
     </UMain>
   </div>

@@ -6,10 +6,9 @@ export default defineNuxtConfig({
   devServer: {
     port: 3000
   },
-  modules: ["@nuxt/image", "@nuxt/ui", "@vueuse/nuxt", "@pinia/nuxt", "@nuxt/eslint", "@nuxtjs/sitemap"],
+  modules: ["@nuxt/image", "@nuxt/ui", "@vueuse/nuxt", "@nuxt/eslint", "@nuxtjs/sitemap"],
 
   image: {
-    // Serve files from /public without the /_ipx/ optimizer.
     provider: 'none'
   },
 
@@ -30,18 +29,13 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: 'https://chinese.domnakseuksa.com',
-    name: 'Domnak Seuksa',
+    name: 'រៀនកុំព្យូទ័រ',
   },
 
   sitemap: {
-    hostname: 'https://chinese.domnakseuksa.com',
     gzip: true,
-    exclude: ['/admin/**'],
     routes: [
       '/',
-      '/learn',
-      '/practice',
       '/words/1',
       '/words/2',
       '/words/3'
@@ -49,8 +43,6 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api'
-    }
+    public: {}
   },
 });
