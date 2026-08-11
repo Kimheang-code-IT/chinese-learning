@@ -1,0 +1,31 @@
+# Node / Nuxt
+node_modules/
+.nuxt/
+.nitro/
+.cache/
+.output/
+.data/
+dist/
+build/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+.history
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Misc
+.fleet
